@@ -21,7 +21,7 @@
       "**/CVS": true
    },
    "files.autoSave": "afterDelay",
-   "workbench.colorTheme": "Default Light Modern",
+   "workbench.colorTheme": "Catppuccin Noctis Macchiato",
    "terminal.integrated.gpuAcceleration": "canvas",
    "editor.defaultFormatter": "HookyQR.beautify"
 }
