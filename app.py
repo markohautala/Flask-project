@@ -1,4 +1,5 @@
 import os
+import json
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -10,7 +11,10 @@ def index():             # This is the view tied to the home route
 
 @app.route("/inspiration") # This is the about route
 def inspiration():  #This is a view 
-    return render_template("inspiration.html", page_title="Inspiration") # This will render the about.html template
+    data = []
+    with open("data/inspiration.json", "r") as json_data:
+        data = json.load(json_data)
+    return render_template("inspiration.html", page_title="Inspiration", inspiration=data ) # This will render the inspiration.html template
 
 
 @app.route("/contact") # This is the about route
