@@ -1,8 +1,12 @@
 import os
 import json
-from flask import Flask, render_template
+from flask import Flask, render_template, request, flash
+
+if os.path.exists("env.py"):
+    import env
 
 app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY")
 
 @app.route("/")  # This is the home route
 def index():             # This is the view tied to the home route
@@ -17,8 +21,10 @@ def inspiration():  #This is a view
     return render_template("inspiration.html", page_title="Inspiration", inspiration=data ) # This will render the inspiration.html template
 
 
-@app.route("/contact") # This is the about route
+@app.route("/contact", methods=["GET", "POST"]) # This is the about route
 def contact():  #This is a view 
+    if request.method == "POST":
+        flash("Thanks {}, we have received your message!".format(request.form["name"]))
     return render_template("contact.html", page_title="Contact") # This will render the about.html template
 
 
