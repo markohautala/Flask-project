@@ -35,7 +35,7 @@ def careers():  #This is a view
 
 if __name__ == "__main__":
     app.run(
-        host=os.getenv("IP", "localhost"), # This allows the app to run on any IP address
-        port=int(os.getenv("PORT", 5000)), #5000 is the default port for Flask
+        host="0.0.0.0",  # Listen on all available network interfaces
+        port=int(os.getenv("PORT", 5000)),  # Use the PORT environment variable provided by Heroku, default to 5000 if not set
         debug=False
     )
